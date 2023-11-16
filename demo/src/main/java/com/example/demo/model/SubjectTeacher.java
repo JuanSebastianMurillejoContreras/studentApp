@@ -1,0 +1,24 @@
+package com.example.demo.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Entity
+@IdClass(SubjectTeacherPK.class)
+public class SubjectTeacher {
+    @Id
+    private Subject subject;
+
+    @Id
+    private Teacher teacher;
+
+}
