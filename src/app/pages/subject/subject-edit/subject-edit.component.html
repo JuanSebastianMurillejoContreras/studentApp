@@ -1,0 +1,47 @@
+<form [formGroup]="form" class="example-container" (submit)="operate()" #frmSubject="ngForm">
+
+    <div [hidden]="true">
+        <mat-form-field>
+            <mat-label>Enter id Subject</mat-label>
+            <input matInput placeholder="ID" required formControlName="idSubject">
+        </mat-form-field>
+    </div>
+
+    <mat-form-field>
+        <mat-label>Cod. Subject</mat-label>
+        <input matInput placeholder="Id Subject" required formControlName="codSubject">
+        <small *ngIf="f['codSubject'].errors?.['required'] && f['codSubject'].touched" class="invalid">Is requiered
+        </small>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Name Subject</mat-label>
+        <input matInput placeholder="Name Subject" required formControlName="nameSubject">
+        <small *ngIf="f['nameSubject'].errors?.['required'] && f['nameSubject'].touched" class="invalid">Is requiered
+        </small>
+        <small *ngIf="f['nameSubject'].errors?.['minlength'] && f['nameSubject'].touched" class="invalid"> Minlength is
+            1 </small>
+        <small *ngIf="f['nameSubject'].errors?.['maxlength'] && f['nameSubject'].touched" class="invalid">Maxlength is
+            35</small>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-select placeholder="Select Teacher" formControlName="teacher">
+            <mat-option *ngFor="let t of teachers" [value]="t">
+                {{t.fistName}} {{t.lastName}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button type="submit" color="primary" [disabled]="frmSubject.invalid">
+        <mat-icon>done</mat-icon>
+        <span>Done</span>
+    </button>
+
+    <button mat-raised-button type="button" color="accent" routerLink="/pages/subject">
+        <mat-icon>cancel</mat-icon>
+        <span>Cancel</span>
+    </button>
+
+
+</form>

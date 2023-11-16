@@ -1,0 +1,71 @@
+    
+<form [formGroup]="form" class="example-container" (submit)="operate()" #frmStudent = "ngForm">
+
+    <div [hidden]="true">
+    <mat-form-field>
+        <mat-label>Enter id Student</mat-label>
+        <input matInput placeholder="ID" required formControlName="idStudent">        
+    </mat-form-field>
+    </div>
+
+    <mat-form-field>
+        <mat-label>DNI</mat-label>
+        <input matInput placeholder="DNI" required formControlName="dni">
+        <small *ngIf="f['dni'].errors?.['required'] && f['dni'].touched" class="invalid">Is requiered </small>
+        <small *ngIf="f['dni'].errors?.['minlength'] && f['dni'].touched" class="invalid">Minlength is 8</small>
+        <small *ngIf="f['dni'].errors?.['maxlength'] && f['dni'].touched" class="invalid">Maxlength is 10</small>        
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>First Name</mat-label>
+        <input matInput placeholder="FirstName" required formControlName="fistName">
+        <small *ngIf="f['fistName'].errors?.['required'] && f['fistName'].touched" class="invalid">Is requiered </small>
+        <small *ngIf="f['fistName'].errors?.['minlength'] && f['fistName'].touched" class="invalid"> Minlength is 2 </small>
+        <small *ngIf="f['fistName'].errors?.['maxlength'] && f['fistName'].touched" class="invalid">Maxlength is 50</small>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input matInput placeholder="LastName" required formControlName="lastName">
+        <small *ngIf="f['lastName'].errors?.['required'] && f['lastName'].touched" class="invalid">Is requiered </small>
+        <small *ngIf="f['lastName'].errors?.['minlength'] && f['lastName'].touched" class="invalid">Minlength is 2 </small>
+        <small *ngIf="f['lastName'].errors?.['maxlength'] && f['lastName'].touched" class="invalid">Maxlength is 50</small>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Gender</mat-label>
+        <input matInput placeholder="Gender" required formControlName="gender">
+        <small *ngIf="f['gender'].errors?.['required'] && f['gender'].touched" class="invalid">Is requiered </small>
+        <small *ngIf="f['gender'].errors?.['min'] && f['gender'].touched" class="invalid">Minlength is 8</small>
+        <small *ngIf="f['gender'].errors?.['max'] && f['gender'].touched" class="invalid">Maxlength is 9</small>
+    </mat-form-field>
+    
+    <mat-form-field>
+        <mat-label>Age</mat-label>
+        <input matInput placeholder="Age" required formControlName="age">
+        <small *ngIf="f['age'].errors?.['required'] && f['age'].touched" class="invalid">Is requiered </small>
+        <small *ngIf="f['age'].errors?.['min'] && f['age'].touched" class="invalid">Min age is 6</small>
+        <small *ngIf="f['age'].errors?.['max'] && f['age'].touched" class="invalid">Max age is 18</small>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Select a date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="birthDate">
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    
+            <button mat-raised-button type="submit" color="primary" [disabled]="frmStudent.invalid">
+                <mat-icon>done</mat-icon>
+                <span>Done</span>
+            </button>
+    
+            <button mat-raised-button type="button" color="accent" routerLink="/pages/student">
+                <mat-icon>cancel</mat-icon>
+                <span>Cancel</span>
+            </button>
+        
+
+</form>
+

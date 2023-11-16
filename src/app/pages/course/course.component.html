@@ -1,0 +1,63 @@
+<router-outlet></router-outlet>
+
+
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput class="filter" (keyup)="applyFilter($event)" placeholder="Search" #input>  
+</mat-form-field>
+<h3>Course</h3> 
+<div class="mat-elevation-z8">  
+  <table mat-table [dataSource]="dataSource" matSort>
+    
+    <!-- ID Column -->
+    <ng-container matColumnDef="idCourse">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Id Course </th>
+      <td mat-cell *matCellDef="let row"> {{row.idCourse}} </td>
+    </ng-container>
+
+    <!-- DNI -->
+    <ng-container matColumnDef="numClassroom">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Num Classroom </th>
+      <td mat-cell *matCellDef="let row"> {{row.numClassroom}} </td>
+    </ng-container>
+
+
+    <!-- First Name -->
+    <ng-container matColumnDef="courseManager">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Course Manager </th>
+      <td mat-cell *matCellDef="let row"> {{row.courseManager}} </td>
+    </ng-container>
+
+    <!-- Last name -->
+    <ng-container matColumnDef="courseMonitor">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Course Monitor </th>
+      <td mat-cell *matCellDef="let row"> {{row.courseMonitor}} </td>
+    </ng-container>
+
+   
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-button color="primary" [routerLink]="['edit', row.idCourse]">
+          <mat-icon>mode_edit</mat-icon>
+        </button>
+
+        <button mat-button color="accent" (click)="delete(row.idCourse)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[10, 20, 30, 100]" aria-label="Select page of users"></mat-paginator>
+
+  <button mat-fab color="primary" style="float: right;" routerLink="/pages/course/new">
+    <mat-icon>add</mat-icon>
+  </button>
+
+</div>

@@ -1,0 +1,77 @@
+<router-outlet></router-outlet>
+
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput class="filter" (keyup)="applyFilter($event)" placeholder="Search" #input>
+</mat-form-field>
+<h3>Qualification</h3> 
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <!-- ID Cualification -->
+    <ng-container matColumnDef="idQualification">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+      <td mat-cell *matCellDef="let row"> {{row.idQualification}} </td>
+    </ng-container>
+
+    <!-- student -->
+    <ng-container matColumnDef="student">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Student </th>
+      <td mat-cell *matCellDef="let row"> 
+        {{row.student.fistName}} 
+        {{row.student.lastName}} 
+       </td>
+    </ng-container>
+
+ <!-- teacher -->
+ <ng-container matColumnDef="teacher">
+  <th mat-header-cell *matHeaderCellDef mat-sort-header> Teacher </th>
+  <td mat-cell *matCellDef="let row"> 
+    {{row.teacher.fistName}} 
+    {{row.teacher.lastName}}  
+  </td>
+</ng-container>
+
+    <!-- subject -->
+    <ng-container matColumnDef="subject">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Subject </th>
+      <td mat-cell *matCellDef="let row"> 
+        {{row.subject.nameSubject}}             
+      </td>
+    </ng-container>
+  
+    <!-- note -->
+    <ng-container matColumnDef="note">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Note </th>
+      <td mat-cell *matCellDef="let row"> 
+        {{row.note}}             
+      </td>
+    </ng-container>
+
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-button color="primary" [routerLink]="['edit', row.idQualification]">
+          <mat-icon>mode_edit</mat-icon>
+        </button>
+
+        <button mat-button color="accent" (click)="delete(row.idQualification)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[10, 20, 30, 100]" aria-label="Select page of users"></mat-paginator>
+
+  <button mat-fab color="primary" style="float: right;" routerLink="/pages/qualification/new">
+    <mat-icon>add</mat-icon>
+  </button>
+
+</div>

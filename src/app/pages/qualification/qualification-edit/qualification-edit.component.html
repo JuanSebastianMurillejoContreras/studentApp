@@ -1,0 +1,61 @@
+<form [formGroup]="form" class="example-container" (submit)="operate()" #frmQualification="ngForm">
+
+    <div [hidden]="true">
+        <mat-form-field>
+            <mat-label>Enter id Subject</mat-label>
+            <input matInput placeholder="ID" required formControlName="idQualification">
+        </mat-form-field>
+    </div>
+
+    <mat-form-field>
+        <mat-label>Select Student</mat-label>
+        <mat-select placeholder="Select Student" formControlName="student">
+            <mat-option *ngFor="let student of students" [value]="student">
+                {{student.fistName}} {{student.lastName}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Select Teacher</mat-label>
+        <mat-select placeholder="Select Teacher" formControlName="teacher">
+            <mat-option *ngFor="let teacher of teachers" [value]="teacher">
+                {{teacher.fistName}} {{teacher.lastName}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Select Subject</mat-label>
+        <mat-select placeholder="Select Subject" formControlName="subject">
+            <mat-option *ngFor="let subject of subjects" [value]="subject">
+                {{subject.nameSubject}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field>
+        <mat-label>Add Note</mat-label>
+        <mat-label>Note</mat-label>
+        <input matInput placeholder="Note (0.0)" required formControlName="note">
+        <small *ngIf="f['note'].errors?.['required'] && f['note'].touched" class="invalid">Is requiered
+        </small>
+        <small *ngIf="f['note'].errors?.['min'] && f['note'].touched" class="invalid"> Minlength is 0 </small>
+        <small *ngIf="f['note'].errors?.['max'] && f['note'].touched" class="invalid">Maxlength is 100</small>
+    </mat-form-field>
+
+   
+
+    <button mat-raised-button type="submit" color="primary" [disabled]="frmQualification.invalid">
+        <mat-icon>done</mat-icon>
+        <span>Done</span>
+    </button>
+
+    <button mat-raised-button type="button" color="accent" routerLink="/pages/qualification">
+        <mat-icon>cancel</mat-icon>
+        <span>Cancel</span>
+    </button>
+
+
+</form>

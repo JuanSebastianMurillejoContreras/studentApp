@@ -1,0 +1,63 @@
+<div class="example-container">
+    <mat-toolbar color="primary" class="example-toolbar">
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
+            <mat-icon *ngIf="sidenav.opened">close</mat-icon>
+        </button>
+
+        <span>Student App</span>
+
+        <span class="example-spacer"></span>
+        <mat-menu #menu="matMenu">
+        </mat-menu>
+    </mat-toolbar>
+
+    <mat-sidenav-container class="example-sidenav-container">
+        <mat-sidenav #sidenav style="width: 250px" mode="over">
+                                    
+           
+            <mat-divider></mat-divider>
+            <button class="myButton" [routerLinkActive]="['active']" mat-menu-item (click)="sidenav.toggle()"
+                routerLink="/pages/teacher" style="cursor: pointer">
+                <mat-icon>star_rate</mat-icon>
+                <span>Teachers</span>
+            </button>
+            <mat-divider></mat-divider>
+
+            <button class="myButton" [routerLinkActive]="['active']" mat-menu-item (click)="sidenav.toggle()"
+                routerLink="/pages/student" style="cursor: pointer">
+                <mat-icon>accessibility</mat-icon>
+                <span>Student</span>
+            </button>
+            <mat-divider></mat-divider>
+
+            <mat-divider></mat-divider>
+            <button class="myButton" [routerLinkActive]="['active']" mat-menu-item (click)="sidenav.toggle()"
+                routerLink="/pages/subject" style="cursor: pointer">
+                <mat-icon>view_carousel</mat-icon>
+                <span>Academic Subject</span>
+            </button>
+            <mat-divider></mat-divider>
+            
+            <mat-divider></mat-divider>
+            <button class="myButton" [routerLinkActive]="['active']" mat-menu-item (click)="sidenav.toggle()"
+                routerLink="/pages/course" style="cursor: pointer">
+                <mat-icon>assignment</mat-icon>
+                <span>Course</span>
+            </button>
+            <mat-divider></mat-divider>
+
+            <button class="myButton" [routerLinkActive]="['active']" mat-menu-item (click)="sidenav.toggle()"
+                routerLink="/pages/qualification" style="cursor: pointer">
+                <mat-icon>assessment</mat-icon>
+                <span>Qualifications</span>
+            </button>
+            <mat-divider></mat-divider>
+        </mat-sidenav>
+
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+
+    </mat-sidenav-container>
+</div>

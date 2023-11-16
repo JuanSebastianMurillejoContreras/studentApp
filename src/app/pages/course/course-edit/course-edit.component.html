@@ -1,0 +1,47 @@
+    
+<form [formGroup]="form" class="example-container" (submit)="operate()" #frmStudent = "ngForm">    
+    <div [hidden]="true">
+    <mat-form-field>
+        <mat-label>Enter id Student</mat-label>
+        <input matInput placeholder="ID" required formControlName="idTeacher">        
+    </mat-form-field>
+    </div>
+ 
+    <mat-form-field>
+        <mat-label>numClassroom</mat-label>
+        <input matInput placeholder="Number Classroom" required formControlName="numClassroom">
+        <small *ngIf="f['numClassroom'].errors?.['required'] && f['numClassroom'].touched" class="invalid">Is requiered </small>
+        <small *ngIf="f['numClassroom'].errors?.['minlength'] && f['numClassroom'].touched" class="invalid">Minlength is 1</small>
+        <small *ngIf="f['numClassroom'].errors?.['maxlength'] && f['numClassroom'].touched" class="invalid">Maxlength is 10</small>        
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Course Manager</mat-label>
+        <input matInput placeholder="Course Manager" required formControlName="courseManager">
+        <small *ngIf="f['courseManager'].errors?.['required'] && f['courseManager'].touched" class="invalid">Is requiered </small>
+        <small *ngIf="f['courseManager'].errors?.['minlength'] && f['courseManager'].touched" class="invalid"> Minlength is 2 </small>
+        <small *ngIf="f['courseManager'].errors?.['maxlength'] && f['courseManager'].touched" class="invalid">Maxlength is 35</small>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Course Monitor</mat-label>
+        <input matInput placeholder="Course Monitor" required formControlName="courseMonitor">
+        <small *ngIf="f['courseMonitor'].errors?.['required'] && f['courseMonitor'].touched" class="invalid">Is requiered </small>
+        <small *ngIf="f['courseMonitor'].errors?.['minlength'] && f['courseMonitor'].touched" class="invalid">Minlength is 2 </small>
+        <small *ngIf="f['courseMonitor'].errors?.['maxlength'] && f['courseMonitor'].touched" class="invalid">Maxlength is 50</small>
+    </mat-form-field>
+
+  
+            <button mat-raised-button type="submit" color="primary" [disabled]="frmStudent.invalid">
+                <mat-icon>done</mat-icon>
+                <span>Done</span>
+            </button>
+    
+            <button mat-raised-button type="button" color="accent" routerLink="/pages/course">
+                <mat-icon>cancel</mat-icon>
+                <span>Cancel</span>
+            </button>
+        
+
+</form>
+
